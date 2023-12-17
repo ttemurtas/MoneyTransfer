@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
+    <PackageReference Include="MediatR" Version="12.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MoneyTransfer.Abstract\MoneyTransfer.Abstract.csproj" />
+    <ProjectReference Include="..\MoneyTransfer.Business.Models\MoneyTransfer.Business.Models.csproj" />
+    <ProjectReference Include="..\MoneyTransfer.Concrete\MoneyTransfer.Concrete.csproj" />
+    <ProjectReference Include="..\MoneyTransfer.Data\MoneyTransfer.Data.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Facade\" />
+  </ItemGroup>
+
+</Project>
