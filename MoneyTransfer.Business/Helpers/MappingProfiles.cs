@@ -12,11 +12,11 @@ namespace MoneyTransfer.Business.Helpers
         public MappingProfiles()
         {
             CreateMap<SendMoneyResponse, Transaction>();
-            CreateMap<Transaction, SendMoneyResponse>();
-            CreateMap<ViewTransactionResponse, Transaction>();
-            CreateMap<Transaction, ViewTransactionResponse>();
-            CreateMap<AppUser, GetUserBalanceViewResponse>();
-            CreateMap<GetUserBalanceViewResponse, AppUser>();
+            CreateMap<Transaction, SendMoneyResponse>(MemberList.Source);
+            CreateMap<ViewTransactionResponse, Transaction>(MemberList.Source);
+            CreateMap<Transaction, ViewTransactionResponse>(MemberList.Source);
+            CreateMap<AppUser, GetUserBalanceViewResponse>(MemberList.Source);
+            CreateMap<GetUserBalanceViewResponse, AppUser>(MemberList.Source);
         }
     }
 }

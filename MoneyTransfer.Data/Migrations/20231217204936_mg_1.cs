@@ -19,7 +19,7 @@ namespace MoneyTransfer.Data.Migrations
                     toUserAccount = table.Column<string>(type: "varchar(10)", nullable: false),
                     description = table.Column<string>(type: "varchar(200)", nullable: false),
                     amount = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    transactionNo = table.Column<string>(type: "varchar(100)", nullable: true),
+                    transactionNo = table.Column<string>(type: "varchar(100)", nullable: false),
                     creationDate = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>

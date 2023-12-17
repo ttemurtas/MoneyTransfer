@@ -4,5 +4,5 @@ using MoneyTransfer.Business.Models.Models.ViewTransaction.Res;
 
 namespace MoneyTransfer.Business.Transfer.Queries
 {
-    public record GetUserTransactionQuery(ViewTransactionRequest req): IRequest<ViewTransactionResponse>;
+    public record GetUserTransactionQuery(string req): IRequest<ViewTransactionResponse>;
 }

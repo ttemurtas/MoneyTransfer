@@ -34,14 +34,14 @@ namespace MoneyTransfer.Business.Transfer.Handlers
 
             Transaction transaction = new() { amount = request.moneySendRequest.amount, description = request.moneySendRequest.Description, fromUserAccount = request.moneySendRequest.fromAccountNo, toUserAccount = request.moneySendRequest.toAccountNo, userId = fromUser.id };
             _context.Add(transaction);
-            _context.SaveChanges();
 
-
-            var response = _mapper.Map<SendMoneyResponse>(transaction);
+            //var response = _mapper.Map<Transaction, SendMoneyResponse>(transaction);
+            SendMoneyResponse response = new();
+            response.transactionNo = transaction.transactionNo;
             response.Ok = true;
-            response.Message = response.transactionNo;
+            response.Message ="success";
 
-
+            _context.SaveChanges();
             return response;
         }
     }

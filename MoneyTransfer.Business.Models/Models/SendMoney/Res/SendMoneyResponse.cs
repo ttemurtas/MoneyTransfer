@@ -4,6 +4,6 @@ namespace MoneyTransfer.Business.Models.Models.SendMoney.Res
 {
     public class SendMoneyResponse : BaseResponse
     {
-        public string transactionNo { get; set; }
+        public Guid transactionNo { get; set; }
     }
 }

@@ -12,7 +12,7 @@ using MoneyTransfer.Data.Contexts;
 namespace MoneyTransfer.Data.Migrations
 {
     [DbContext(typeof(MoneyTransferAPIDbContext))]
-    [Migration("20231217153430_mg_1")]
+    [Migration("20231217204936_mg_1")]
     partial class mg_1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -94,6 +94,7 @@ namespace MoneyTransfer.Data.Migrations
                         .HasColumnType("varchar(10)");
 
                     b.Property<string>("transactionNo")
+                        .IsRequired()
                         .HasColumnType("varchar(100)");
 
                     b.Property<Guid>("userId")

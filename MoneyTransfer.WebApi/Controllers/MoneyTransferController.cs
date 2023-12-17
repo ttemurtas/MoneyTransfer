@@ -20,14 +20,15 @@ namespace MoneyTransfer.WebApi.Controllers
         {
             _mediator = mediator;
         }
-        [HttpGet]
-        public IActionResult Index()
-        {
-            return View();
-        }
+        //[HttpGet]
+        //public IActionResult Index()
+        //{
+        //    return View();
+        //}
 
         //Balance view
         [HttpGet("{accountNo}")]
+
         public async Task<IActionResult> GetBalanceView(string accountNo)
         {
             var request = new GetUserBalanceQuery(accountNo);
@@ -37,39 +38,40 @@ namespace MoneyTransfer.WebApi.Controllers
             if (response != null)
                 return Json(response.amount);
 
-            return NotFound();
+            return NotFound(response.Message);
+        }
+        //View single transaction
+        [HttpGet("{transactionNo}")]
+        public async Task<IActionResult> GetMoneyTransaction(string transactionNo)
+        {
+            var request = new GetUserTransactionQuery(transactionNo);
+
+            var response = await _mediator.Send(request);
+
+            if (response != null)
+                return Json(response);
+
+            return NotFound(response.Message);
         }
 
         //View all transactions
         [HttpGet]
-        public async Task<IActionResult> GetAllTransactions([FromBody] ViewTransactionRequest req)
+        [Route("/getalltransaction")]
+        public async Task<IActionResult> GetAllTransactions(string accountNo)
         {
-            var request = new GetUserAllTransactionsQuery(req);
+            var request = new GetUserAllTransactionsQuery(accountNo);
 
             var response = await _mediator.Send(request);
 
             if (response != null)
                 return Json(response);
 
-            return NotFound();
-        }
-
-        //View single transaction
-        [HttpGet]
-        public async Task<IActionResult> GetTransaction([FromBody] ViewTransactionRequest req)
-        {
-            var request = new GetUserTransactionQuery(req);
-
-            var response = await _mediator.Send(request);
-
-            if (response != null)
-                return Json(response);
-
-            return NotFound();
+            return NotFound(response[0].Message);
         }
 
         //Sending money
         [HttpPost]
+        [Route("/sendmoney")]
         public async Task<IActionResult> SendMoney([FromBody] SendMoneyRequest moneyRequest)
         {
             var request = new SendMoneyCommand(moneyRequest);
@@ -79,7 +81,7 @@ namespace MoneyTransfer.WebApi.Controllers
             if (response != null)
                 return Json(response);
 
-            return NotFound();
+            return NotFound(response.Message);
         }
     }
 }

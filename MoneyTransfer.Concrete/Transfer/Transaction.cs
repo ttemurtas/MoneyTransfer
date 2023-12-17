@@ -24,6 +24,6 @@ namespace MoneyTransfer.Concrete.Transfer
         [Column(TypeName = "decimal(18,2)")]
         public decimal amount { get; set; }
         [Column(TypeName = "varchar(100)")]
-        public string transactionNo { get; set; } = new Guid().ToString();
+        public Guid transactionNo { get; set; } = new Guid();
     }
 }

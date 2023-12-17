@@ -7,5 +7,7 @@ namespace MoneyTransfer.Business.Models.Models.ViewTransaction.Res
         public string fromUserAccount { get; set; }
         public string toUserAccount { get; set; }
         public string description { get; set; }
+        public Guid transactionNo { get; set; }
+        public decimal amount { get; set; }
     }
 }

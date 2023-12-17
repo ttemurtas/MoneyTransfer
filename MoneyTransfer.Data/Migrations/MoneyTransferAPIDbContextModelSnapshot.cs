@@ -92,6 +92,7 @@ namespace MoneyTransfer.Data.Migrations
                         .HasColumnType("varchar(10)");
 
                     b.Property<string>("transactionNo")
+                        .IsRequired()
                         .HasColumnType("varchar(100)");
 
                     b.Property<Guid>("userId")

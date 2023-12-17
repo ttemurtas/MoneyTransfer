@@ -17,7 +17,7 @@ namespace MoneyTransfer.Business.Transfer.Handlers
         }
         public async Task<ViewTransactionResponse> Handle(GetUserTransactionQuery request, CancellationToken cancellationToken)
         {
-            var transaction = _context.Transactions.Where(x => x.transactionNo == request.req.transactionNo).FirstOrDefault();
+            var transaction = _context.Transactions.Where(x => x.transactionNo == new Guid(request.req)).FirstOrDefault();
             if (transaction == null)
             {
                 return await Task.FromResult(new ViewTransactionResponse() { Ok = false }) ;
