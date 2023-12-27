@@ -22,8 +22,13 @@ namespace MoneyTransfer.Business.Transfer.Handlers
             if (balance == null)
                 return await Task.FromResult(new GetUserBalanceViewResponse() { Ok = false });
 
-            var response = _mapper.Map<GetUserBalanceViewResponse>(balance);
-            response.Ok = true;
+            //var response = _mapper.Map<GetUserBalanceViewResponse>(balance);
+            GetUserBalanceViewResponse response = new()
+            {
+                amount = balance.amount,
+                Message = string.Format("..."),
+                Ok = true
+            };
 
             return await Task.FromResult(response);
         }

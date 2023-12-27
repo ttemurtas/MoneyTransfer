@@ -20,12 +20,18 @@ namespace MoneyTransfer.Business.Transfer.Handlers
             var transaction = _context.Transactions.Where(x => x.transactionNo == new Guid(request.req)).FirstOrDefault();
             if (transaction == null)
             {
-                return await Task.FromResult(new ViewTransactionResponse() { Ok = false }) ;
+                return await Task.FromResult(new ViewTransactionResponse() { Ok = false });
             }
-            var response = _mapper.Map<ViewTransactionResponse>(transaction);
-            response.Ok = true;
+           // var response = _mapper.Map<ViewTransactionResponse>(transaction);
+            ViewTransactionResponse myResponse = new();
+            myResponse.amount = transaction.amount;
+            myResponse.description = transaction.description;
+            myResponse.fromUserAccount = transaction.fromUserAccount;
+            myResponse.toUserAccount = transaction.toUserAccount;
+            myResponse.Ok = true;
+            myResponse.transactionNo = transaction.transactionNo;
 
-            return await Task.FromResult(response);
+            return await Task.FromResult(myResponse);
         }
     }
 }

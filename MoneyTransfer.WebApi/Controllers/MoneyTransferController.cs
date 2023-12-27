@@ -41,7 +41,7 @@ namespace MoneyTransfer.WebApi.Controllers
             return NotFound(response.Message);
         }
         //View single transaction
-        [HttpGet("{transactionNo}")]
+        [HttpPut("{transactionNo}")]
         public async Task<IActionResult> GetMoneyTransaction(string transactionNo)
         {
             var request = new GetUserTransactionQuery(transactionNo);
